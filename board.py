@@ -1,8 +1,6 @@
 """
 Classe Board: représente l'état et la gestion du plateau de jeu
 """
-import random
-
 class Board:
 
     def __init__(self, rows=6, columns=7):
@@ -11,10 +9,11 @@ class Board:
         self.grid = [[" " for _ in range(columns)] for _ in range(rows)]
 
     def afficher_plateau(self):
-    
+        
+        print("  0  "+" 1  "+" 2  "+" 3  "+" 4  "+" 5  "+" 6  ")
         for row in self.grid:
             print("| " + " | ".join(row) + " |")
-            print("-" * (4 * self.columns + 1))
+            print("-" * (4 * self.columns + 2))
         
         return self.grid
     
@@ -41,15 +40,3 @@ class Board:
         collones_disponibles = set(collones_disponibles)
         print(f"The following colmuns are available {collones_disponibles}")
         return collones_disponibles
-
-board = Board()
-
-j = 40
-
-while j > 0:
-    i = random.choice(range(0, 7))
-    grid = board.ajouter_un_pion(i, "X")
-    j -= 1
-
-board.afficher_plateau()
-board.verifier_colonnes_disponibles(grid)
