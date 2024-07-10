@@ -15,6 +15,8 @@ class Board:
         for row in self.grid:
             print("| " + " | ".join(row) + " |")
             print("-" * (4 * self.columns + 1))
+        
+        return self.grid
     
     def ajouter_un_pion(self, column, pion):
         
@@ -37,8 +39,8 @@ class Board:
                     pass
         
         collones_disponibles = set(collones_disponibles)
-        print(collones_disponibles)
-
+        print(f"The following colmuns are available {collones_disponibles}")
+        return collones_disponibles
 
 board = Board()
 
