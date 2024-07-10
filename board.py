@@ -23,13 +23,31 @@ class Board:
                 self.grid[row][column] = pion
                 break
     
+        return self.grid
+    
+    def verifier_colonnes_disponibles(self, grid):
+
+        collones_disponibles = []
+
+        for col in range(self.columns):
+            for row in range(len(grid))[::-1]:
+                if grid[row][col] == ' ':
+                    collones_disponibles.append(col)
+                else:
+                    pass
+        
+        collones_disponibles = set(collones_disponibles)
+        print(collones_disponibles)
+
+
 board = Board()
 
-j = 12
+j = 40
 
 while j > 0:
     i = random.choice(range(0, 7))
-    board.ajouter_un_pion(i, "X")
+    grid = board.ajouter_un_pion(i, "X")
     j -= 1
 
 board.afficher_plateau()
+board.verifier_colonnes_disponibles(grid)
