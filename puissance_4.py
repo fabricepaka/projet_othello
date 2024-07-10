@@ -15,7 +15,11 @@ class Game:
 
     def choose_a_move(self):
 
+        print("        START OF THE GAME           ")
+        print("       _____________________        ")
+
         while True:
+
             grid = self.board.afficher_plateau()
             #self.board.verifier_colonnes_disponibles(grid)
 
@@ -37,6 +41,9 @@ class Game:
                 except ValueError:
                     print("Invalid input. Please enter a number between 0 and 6.")
 
+            # check win condition
+            if self.verifier_cond(grid, pion):
+                raise NotImplementedError
 
             self.switch_turns()
 
@@ -50,24 +57,6 @@ class Game:
         
     def check_win_condition():
         raise NotImplementedError
-    
-    
-    
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
 
 #if __name__ == "__main__":
     
