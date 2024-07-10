@@ -1,6 +1,7 @@
 """
 Classe Board: représente l'état et la gestion du plateau de jeu
 """
+import random
 
 class Board:
 
@@ -21,3 +22,14 @@ class Board:
             if self.grid[row][column] == ' ':
                 self.grid[row][column] = pion
                 break
+    
+board = Board()
+
+j = 12
+
+while j > 0:
+    i = random.choice(range(0, 7))
+    board.ajouter_un_pion(i, "X")
+    j -= 1
+
+board.afficher_plateau()
