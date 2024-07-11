@@ -12,14 +12,15 @@ class Game:
             Player("Player 2", 'X')
         ]
         self.i = random.choice(range(0, 2))
+        self.verifier = Verifier_la_condition_de_victoire()
 
     def choose_a_move(self):
-
+        
         print("        START OF THE GAME           ")
         print("       _____________________        ")
 
         while True:
-
+            
             grid = self.board.afficher_plateau()
             #self.board.verifier_colonnes_disponibles(grid)
 
@@ -42,8 +43,10 @@ class Game:
                     print("Invalid input. Please enter a number between 0 and 6.")
 
             # check win condition
-            if self.verifier_cond(grid, pion):
-                raise NotImplementedError
+            if self.verifier.verifier_cond(grid, pion):
+                grid = self.board.afficher_plateau()
+                print(f"{current_player.nom} wins!")
+                break
 
             self.switch_turns()
 
@@ -58,5 +61,7 @@ class Game:
     def check_win_condition():
         raise NotImplementedError
 
-#if __name__ == "__main__":
+if __name__ == "__main__":
+    game = Game()
+    game.choose_a_move()
     
